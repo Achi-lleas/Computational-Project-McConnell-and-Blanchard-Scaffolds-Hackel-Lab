@@ -1,0 +1,61 @@
+"""
+Achilleas Thomas (Achi-lleas) 02/03/2025:
+This is a script that generates JSON files of one protein scaffold along with its target (all in FASTA format) for use in AlphaFold3.
+The names of the text files and other paramters can be modified for different applications.
+"""
+
+from Bio import SeqIO
+
+def generate(name, target, scaffold, number):
+    
+    template = """
+        {
+        "name": "%s",
+        "modelSeeds": [],
+        "sequences": [
+            {
+            "proteinChain": {
+                "sequence": "%s",
+                "count": %s,
+                "maxTemplateDate": "2023-01-20"
+            }
+            },
+            {
+            "proteinChain": {
+                "sequence": "%s",
+                "count": 1,
+                "useStructureTemplate": false
+            }
+            }
+                        ]
+            ,
+        "dialect": "alphafoldserver",
+        "version": 1
+        },
+    """ % (name, target, scaffold, number)
+    
+    return template
+
+if __name__ == "__main__":
+
+    with open("McConnell Sequences.txt", "r") as scaffolds: 
+        
+        sequences_of_scaffolds = SeqIO.parse(scaffolds, "fasta")
+        
+        with open("Target Sequences.txt", "r") as targets:
+            
+            sequences_of_targets = SeqIO.to_dict(SeqIO.parse(targets, "fasta"))
+            
+            with open("McConnell JSON.txt", "w") as answer:
+                
+                answer.write("[")
+                answer.write("\n")
+                
+                for i in sequences_of_scaffolds:
+                    
+                    for j in range(1,21):
+                        
+                        answer.write(generate(i.id + "seed" + str(j), sequences_of_targets[i.description[i.description.index("=")+1:]].seq, 1, i.seq)) # The FASTA sequence identifier line includes "target=[name of target]".
+                        answer.write("\n")
+                
+                answer.write("]")

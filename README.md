@@ -1,4 +1,4 @@
-# Computation-Project-McConnell-and-Blanchard-Scaffolds-Hackel-Lab
+# Computational-Project-McConnell-and-Blanchard-Scaffolds-Hackel-Lab
 
 # Achilleas Thomas (Achi-lleas) 01/28/2025:
 # This is a protein engineering project by undergraduate students in the Hackel Lab of the University of Minnesota Twin Cities.

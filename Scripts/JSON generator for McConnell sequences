@@ -1,6 +1,6 @@
 """
-Achilleas Thomas (Achi-lleas) 02/03/2025:
-This is a script that generates JSON files of one protein scaffold along with its target (all in FASTA format) for use in AlphaFold3.
+Achilleas Thomas (Achi-lleas) 02/05/2025:
+This is a script that generates JSON files of ONE protein scaffold along with ONE target (all in FASTA format) for use in AlphaFold3. No PTM/cofactors are taken into account.
 This script will be used to generate JSON files for the sequences identified by McConnell et al. (2023) for use in AlphaFold3.
 """
 
@@ -9,7 +9,7 @@ from Bio import SeqIO
 from re import sub
 
 def generate(name, target, scaffold):
-    """This function generates a standard JSON template for the interaction between two different proteins.
+    """This function generates a standard JSON template for the interaction between two different peptide chains.
     
     Args: the name of the job, the sequence of the target protein, the sequence of the binding scaffold.
     
@@ -54,24 +54,24 @@ if __name__ == "__main__":
             
             sequences_of_targets = SeqIO.to_dict(SeqIO.parse(targets, "fasta"))
             
-            with open("McConnell JSON.txt", "w") as answer:
+            with open("McConnell JSON.txt", "w") as file:
                 
-                answer.write("[")
-                answer.write("\n")
+                file.write("[")
+                file.write("\n")
                 
                 for i in sequences_of_scaffolds:
                     
-                    for j in range(1,21): # For our purposes, want to run the same job 20 times.
+                    for j in range(1,21): # For our project, want to run the same job 20 times.
                         
-                        answer.write(generate(i.id + "seed" + str(j), sequences_of_targets[i.description[i.description.index("=")+1:]].seq, i.seq)) # The FASTA sequence identifier line includes "[target=name of target]".
-                        answer.write("\n")
+                        file.write(generate(i.id + "seed" + str(j), sequences_of_targets[i.description[i.description.index("=")+1:]].seq, i.seq)) # The FASTA sequence identifier line includes "[target=name of target]".
+                        file.write("\n")
                 
-                answer.write("]")
+                file.write("]")
 
-with open("answer.txt", "r+") as file:
-    
-    text = file.read()
-    text = sub(pattern="        },\n\n]", repl="        }\n\t\n]", string=text)
-    file.seek(0)
-    file.write(text)
-    file.truncate()
+    with open("McConnell JSON.txt", "r+") as file:
+        
+        text = file.read()
+        text = sub(pattern="        },\n\n]", repl="        }\n\t\n]", string=text)
+        file.seek(0)
+        file.write(text)
+        file.truncate()

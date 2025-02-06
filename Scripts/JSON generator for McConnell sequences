@@ -1,13 +1,21 @@
 """
 Achilleas Thomas (Achi-lleas) 02/03/2025:
 This is a script that generates JSON files of one protein scaffold along with its target (all in FASTA format) for use in AlphaFold3.
-The names of the text files and other paramters can be modified for different applications.
+This script will be used to generate JSON files for the sequences identified by McConnell et al. (2023) for use in AlphaFold3.
 """
 
 from Bio import SeqIO
 
-def generate(name, target, scaffold, number):
+from re import sub
+
+def generate(name, target, scaffold):
+    """This function generates a standard JSON template for the interaction between two different proteins.
     
+    Args: the name of the job, the sequence of the target protein, the sequence of the binding scaffold.
+    
+    Returns: a JSON template in string format.
+    """
+
     template = """
         {
         "name": "%s",
@@ -16,7 +24,7 @@ def generate(name, target, scaffold, number):
             {
             "proteinChain": {
                 "sequence": "%s",
-                "count": %s,
+                "count": 1,
                 "maxTemplateDate": "2023-01-20"
             }
             },
@@ -32,14 +40,14 @@ def generate(name, target, scaffold, number):
         "dialect": "alphafoldserver",
         "version": 1
         },
-    """ % (name, target, scaffold, number)
+    """ % (name, target, scaffold)
     
     return template
 
 if __name__ == "__main__":
 
-    with open("McConnell Sequences.txt", "r") as scaffolds: 
-        
+    with open("McConnell Sequences.txt", "r") as scaffolds: #The names of the text files and other parameters can be modified for different applications.
+
         sequences_of_scaffolds = SeqIO.parse(scaffolds, "fasta")
         
         with open("Target Sequences.txt", "r") as targets:
@@ -53,9 +61,17 @@ if __name__ == "__main__":
                 
                 for i in sequences_of_scaffolds:
                     
-                    for j in range(1,21):
+                    for j in range(1,21): # For our purposes, want to run the same job 20 times.
                         
-                        answer.write(generate(i.id + "seed" + str(j), sequences_of_targets[i.description[i.description.index("=")+1:]].seq, 1, i.seq)) # The FASTA sequence identifier line includes "target=[name of target]".
+                        answer.write(generate(i.id + "seed" + str(j), sequences_of_targets[i.description[i.description.index("=")+1:]].seq, i.seq)) # The FASTA sequence identifier line includes "[target=name of target]".
                         answer.write("\n")
                 
                 answer.write("]")
+
+with open("answer.txt", "r+") as file:
+    
+    text = file.read()
+    text = sub(pattern="        },\n\n]", repl="        }\n\t\n]", string=text)
+    file.seek(0)
+    file.write(text)
+    file.truncate()

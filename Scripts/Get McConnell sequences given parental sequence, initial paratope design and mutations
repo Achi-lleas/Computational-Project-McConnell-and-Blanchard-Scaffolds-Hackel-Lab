@@ -1,5 +1,5 @@
 """
-Achilleas Thomas (Achi-lleas) 01/28/2025:
+Achilleas Thomas (Achi-lleas) 02/05/2025:
 This is a script to get a specific variant when we know its parental sequence, its initial paratope design, and its mutations relative to the parental sequence.
 This will be used for the McConnell et al. paper (26 sequences in total).
 """

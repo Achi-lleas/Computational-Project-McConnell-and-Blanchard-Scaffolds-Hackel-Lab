@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
                 dictionary_of_targets[j.id] = helper
 
-            with open("Blanchard JSON.txt", "w") as file:
+            with open("Blanchard JSON.json", "w") as file:
                 
                 file.write("[")
                 file.write("\n")
@@ -116,7 +116,7 @@ if __name__ == "__main__":
                 
                 file.write("]")
 
-    with open("Blanchard JSON.txt", "r+") as file:
+    with open("Blanchard JSON.json", "r+") as file:
         
         text = file.read()
         text = sub(pattern="        },\n\n]", repl="        }\n\t\n]", string=text)

@@ -55,7 +55,7 @@ if __name__ == "__main__":
             
             sequences_of_targets = SeqIO.to_dict(SeqIO.parse(targets, "fasta"))
             
-            with open("McConnell JSON.txt", "w") as file:
+            with open("McConnell JSON.json", "w") as file:
                 
                 file.write("[")
                 file.write("\n")
@@ -80,7 +80,7 @@ if __name__ == "__main__":
                 
                 file.write("]")
 
-    with open("McConnell JSON.txt", "r+") as file:
+    with open("McConnell JSON.json", "r+") as file:
         
         text = file.read()
         text = sub(pattern="        },\n\n]", repl="        }\n\t\n]", string=text)

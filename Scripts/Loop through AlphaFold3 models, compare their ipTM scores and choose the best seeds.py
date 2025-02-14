@@ -41,7 +41,7 @@ def main(prefix):
                 
         for k in best_structures:    
 
-            os.replace(f"Zipped files/{k}/fold_{k}_model_0.cif", f"Good structures/{prefix}{i}/fold_{k}_model_0.cif")
+            os.replace(f"Scaffold files/{k}/fold_{k}_model_0.cif", f"Best seeds/{prefix}{i}/fold_{k}_model_0.cif")
 
 if __name__ == "__main__":  
     

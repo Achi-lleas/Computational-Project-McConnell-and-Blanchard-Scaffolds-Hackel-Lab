@@ -16,15 +16,15 @@ def main(prefix):
 
     for i in range(1,n+1):
         
-        os.mkdir(f"Best seeds/{prefix}{i}") # The file paths, the file names and other parameters can change for different applications of this script.
+        os.mkdir(f"./Best seeds/{prefix}{i}") # The file paths, the file names and other parameters can change for different applications of this script.
 
         iptm_scores = {}
 
         for j in range(1,21): # Since twenty models have been generated for each scaffold.
         
-            with open(f"Scaffold files/{prefix}{i}seed{j}/fold_{prefix}{i}seed{j}_summary_confidences_0.json", "r") as confidence_metrics:
+            with open(f"./Scaffold files/{prefix}{i}seed{j}/fold_{prefix}{i}seed{j}_summary_confidences_0.json", "r") as confidence_metrics:
                 
-                file_path = f"Scaffold files/{prefix}{i}seed{j}/fold_{prefix}{i}seed{j}_summary_confidences_0.json"
+                file_path = f"./Scaffold files/{prefix}{i}seed{j}/fold_{prefix}{i}seed{j}_summary_confidences_0.json"
                 structure_name = file_path.split("/")[-2]
                 data = json.load(confidence_metrics)
                 iptm_scores[structure_name] = data["iptm"]
@@ -41,7 +41,7 @@ def main(prefix):
                 
         for k in best_structures:    
 
-            os.replace(f"Scaffold files/{k}/fold_{k}_model_0.cif", f"Best seeds/{prefix}{i}/fold_{k}_model_0.cif")
+            os.replace(f"./Scaffold files/{k}/fold_{k}_model_0.cif", f"./Best seeds/{prefix}{i}/fold_{k}_model_0.cif")
 
 if __name__ == "__main__":  
     

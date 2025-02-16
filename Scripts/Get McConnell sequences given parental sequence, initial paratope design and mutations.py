@@ -22,7 +22,7 @@ class get_sequence():
         Returns: a string of the sequence.
         """
         
-        with open("McConnell Sequences.txt", "a") as file: # The names of the documents can change for different applications.
+        with open("./McConnell sequences.txt", "a") as file: # The names of the documents can change for different applications.
 
             sequence_list = [aminoacid for aminoacid in self.parent]
             
@@ -39,11 +39,11 @@ class get_sequence():
 
 if __name__ == "__main__":
 
-    parental_sequences = list(SeqIO.parse("Parental sequences.txt", "fasta")) # Parental sequences are given in FASTA format and the order they appear in the document is specific.
+    parental_sequences = list(SeqIO.parse("./Parental sequences.txt", "fasta")) # Parental sequences are given in FASTA format and the order they appear in the document is specific.
 
     parental_sequences = [i.seq for i in parental_sequences]
 
-    with open("Initial paratope designs.txt", "r") as file: # The order of initial paratope designs is also specific. Initial paratope designs were only used for Parental Sequence 1, but this can change for future uses.
+    with open("./Initial paratope designs.txt", "r") as file: # The order of initial paratope designs is also specific. Initial paratope designs were only used for Parental Sequence 1, but this can change for future uses.
         
         initial_paratope_designs = []
         

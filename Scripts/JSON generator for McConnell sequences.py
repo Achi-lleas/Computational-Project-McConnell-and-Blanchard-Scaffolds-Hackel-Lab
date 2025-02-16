@@ -47,15 +47,15 @@ def generate(name, target, scaffold):
 
 if __name__ == "__main__":
 
-    with open("McConnell Sequences.txt", "r") as scaffolds: #The names of the text files and other parameters can be modified for different applications.
+    with open("./McConnell sequences.txt", "r") as scaffolds: #The names of the text files and other parameters can be modified for different applications.
 
         sequences_of_scaffolds = SeqIO.parse(scaffolds, "fasta")
         
-        with open("Target Sequences.txt", "r") as targets:
+        with open("./Target sequences.txt", "r") as targets:
             
             sequences_of_targets = SeqIO.to_dict(SeqIO.parse(targets, "fasta"))
             
-            with open("McConnell JSON.json", "w") as file:
+            with open("./McConnell JSON.json", "w") as file:
                 
                 file.write("[")
                 file.write("\n")
@@ -80,7 +80,7 @@ if __name__ == "__main__":
                 
                 file.write("]")
 
-    with open("McConnell JSON.json", "r+") as file:
+    with open("./McConnell JSON.json", "r+") as file:
         
         text = file.read()
         text = sub(pattern="        },\n\n]", repl="        }\n\t\n]", string=text)

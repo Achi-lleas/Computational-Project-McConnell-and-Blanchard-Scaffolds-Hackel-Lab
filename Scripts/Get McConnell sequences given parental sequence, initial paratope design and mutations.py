@@ -9,6 +9,7 @@ from Bio import SeqIO
 class get_sequence(): 
     
     def __init__(self, parental_sequence, initial_paratope_design, mutations):
+        
         self.parent = parental_sequences[int(parental_sequence)-1]
         self.inidesign = initial_paratope_designs[int(initial_paratope_design)-1]
         self.mut = mutations

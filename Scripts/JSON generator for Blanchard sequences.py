@@ -66,11 +66,11 @@ def generate_JSON(name, scaffold, targets):
 
 if __name__ == "__main__":
 
-    with open("Blanchard Sequences.txt", "r") as scaffolds: #The names of the text files and other parameters can be modified for different applications.
+    with open("./Blanchard sequences.txt", "r") as scaffolds: #The names of the text files and other parameters can be modified for different applications.
 
         sequences_of_scaffolds = SeqIO.parse(scaffolds, "fasta")
         
-        with open("Target Sequences.txt", "r") as targets:
+        with open("./Target sequences.txt", "r") as targets:
             
             sequences_of_targets_initial_dictionary = SeqIO.to_dict(SeqIO.parse(targets, "fasta"))
             
@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
                 dictionary_of_targets[j.id] = helper
 
-            with open("Blanchard JSON.json", "w") as file:
+            with open("./Blanchard JSON.json", "w") as file:
                 
                 file.write("[")
                 file.write("\n")
@@ -116,7 +116,7 @@ if __name__ == "__main__":
                 
                 file.write("]")
 
-    with open("Blanchard JSON.json", "r+") as file:
+    with open("./Blanchard JSON.json", "r+") as file:
         
         text = file.read()
         text = sub(pattern="        },\n\n]", repl="        }\n\t\n]", string=text)

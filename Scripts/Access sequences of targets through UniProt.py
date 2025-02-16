@@ -21,18 +21,18 @@ def main():
             Returns: a list containing the protein of interest.
             """
             
-            with open('./Current Target Data.txt', 'w') as handle:
+            with open('./Current target data.txt', 'w') as handle:
                 
                 page = urllib.request.urlopen(f"http://www.uniprot.org/uniprot/{id}.fasta")
                 page = page.read().decode("utf-8")
                 handle.write(page)
             
-            with open("./Current Target Data.txt", "r") as handle:
+            with open("./Current target data.txt", "r") as handle:
                 
                 proteins = list(SeqIO.parse(handle, "fasta"))
                 return proteins
         
-        with open("./Target Sequences.txt", "a") as answer:
+        with open("./Target sequences.txt", "a") as answer:
             
             for line in file:
         

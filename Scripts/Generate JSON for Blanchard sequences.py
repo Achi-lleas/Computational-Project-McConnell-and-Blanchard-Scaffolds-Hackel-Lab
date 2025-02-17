@@ -2,6 +2,7 @@
 Achilleas Thomas (Achi-lleas) 02/06/2025:
 This is a script that generates JSON files of ONE protein scaffold along with multiple targets that might consist of more than one chains (all in FASTA format). No PTM/cofactors are taken into account.
 This script will be used to generate JSON files for the sequences identified by Blanchard et al. (2023) for use in AlphaFold3.
+Alternatively, one could use the json module.
 """
 
 from Bio import SeqIO

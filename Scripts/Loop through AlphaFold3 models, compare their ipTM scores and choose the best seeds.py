@@ -11,7 +11,7 @@ def main(prefix):
     if prefix == "bl": # The prefix of the files and the value of n can change for different applications.
         n = 12
     
-    if prefix == "mc":
+    elif prefix == "mc":
         n = 26
 
     for i in range(1,n+1):

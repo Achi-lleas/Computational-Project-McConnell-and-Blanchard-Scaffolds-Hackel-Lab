@@ -20,7 +20,7 @@ def main(prefix):
 
         for seed_number in range(1,21): # 20 seeds have been generated for each scaffold.
 
-            os.replace(f"./Models/bl{scaffold_number}seed{seed_number}/fold_bl{scaffold_number}seed{seed_number}_model_0.cif", 
+            os.replace(f"./Scaffold files/bl{scaffold_number}seed{seed_number}/fold_bl{scaffold_number}seed{seed_number}_model_0.cif", 
                        f"./cif files/{prefix}{scaffold_number}/fold_bl{scaffold_number}seed{seed_number}_model_0.cif")
 
 if __name__ == "__main__":

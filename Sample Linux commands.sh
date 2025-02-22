@@ -11,7 +11,7 @@ $ python3 "Access sequences of targets through UniProt.py"
 # Make sure to have the following files in the directory correctly formatted: McConnell sequences.txt, Blanchard sequences.txt, Target sequences.txt
 $ python3 "Generate JSON for McConnell sequences.py"
 $ python3 "Generate JSON for Blanchard sequences.py"
-# HMake sure to have the following files in the directory: Blanchard JSON.json, McConnell JSON.json
+# Make sure to have the following files in the directory: Blanchard JSON.json, McConnell JSON.json
 $ Rscript "Split JSON file.r"
 # Run the jobs on AlphaFold3 and download the models
 $ unzip ~Downloads/*.zip

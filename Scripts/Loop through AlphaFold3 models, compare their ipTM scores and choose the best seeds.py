@@ -16,7 +16,7 @@ def main(prefix):
 
     for i in range(1, n+1):
         
-        os.mkdir(f"./Best seeds/{prefix}{i}2") # The file paths, the file names and other parameters can change for different applications of this script.
+        os.mkdir(f"./Best seeds/{prefix}{i}") # The file paths, the file names and other parameters can change for different applications of this script.
 
         iptm_scores = {}
 
@@ -41,7 +41,7 @@ def main(prefix):
                 
         for k in best_structures:    
 
-            shutil.copyfile(f"./Scaffold files/{k}/fold_{k}_model_0.cif", f"./Best seeds/{prefix}{i}2/fold_{k}_model_0.cif")
+            shutil.copyfile(f"./Scaffold files/{k}/fold_{k}_model_0.cif", f"./Best seeds/{prefix}{i}/fold_{k}_model_0.cif")
 
 if __name__ == "__main__":  
     

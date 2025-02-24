@@ -6,4 +6,4 @@ This is a protein engineering project by undergraduate students in the Hackel La
 
 We aim to model the interactions between the protein binding scaffolds identified by McConnell _et al._ (2023) and Blanchard _et al._ (2023) and their targets using AlphaFold3 and ChimeraX.
 
-Then we will use algorithms to identify common amino acid motifs that are found in the paratope of these binding scaffolds.
+Then we will use algorithms to identify the amino acid enrichment and common amino acid motifs that are found in the paratope of these binding scaffolds.

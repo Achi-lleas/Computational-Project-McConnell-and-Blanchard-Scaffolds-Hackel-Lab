@@ -4,7 +4,7 @@ This is a simple script that will be used to transfer all the .cif files of the 
 The .cif files will then be overlaid on ChimeraX using a different script. Instead of this Python script, a Linux script could have been used without difference.
 """
 
-import os
+import os, shutil
 
 def main(prefix):
 
@@ -20,8 +20,8 @@ def main(prefix):
 
         for seed_number in range(1,21): # 20 seeds have been generated for each scaffold.
 
-            os.replace(f"./Scaffold files/bl{scaffold_number}seed{seed_number}/fold_bl{scaffold_number}seed{seed_number}_model_0.cif", 
-                       f"./cif files/{prefix}{scaffold_number}/fold_bl{scaffold_number}seed{seed_number}_model_0.cif")
+            shutil.copyfile(f"./Scaffold files/{prefix}{scaffold_number}seed{seed_number}/fold_{prefix}{scaffold_number}seed{seed_number}_model_0.cif", 
+                       f"./cif files/{prefix}{scaffold_number}/fold_{prefix}{scaffold_number}seed{seed_number}_model_0.cif")
 
 if __name__ == "__main__":
 

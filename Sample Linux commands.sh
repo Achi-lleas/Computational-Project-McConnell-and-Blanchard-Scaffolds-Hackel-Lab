@@ -1,6 +1,6 @@
 # Achilleas Thomas (Achi-lleas) 02/20/2025:
 # This is a sample Linux script that can be used to replicate the sequence of steps used to perform our project, by running each of the scripts one at a time.
-# Make sure to have every file in the correct place and with the correct format.
+# Make sure to have every file in the correct place and with the correct format. For the correct format look into each individual script.
 
 $ mkdir "./Blanchard-McConnell files"
 $ cd "./Blanchard-McConnell files"
@@ -14,7 +14,7 @@ $ python3 "Generate JSON for Blanchard sequences.py"
 # Make sure to have the following files in the directory: Blanchard JSON.json, McConnell JSON.json
 $ Rscript "Split JSON file.r"
 # Run the jobs on AlphaFold3 and download the models
-$ unzip ~Downloads/*.zip
+$ unzip ~/Downloads/*.zip
 $ mkdir "./Scaffold models"
 $ mv -v ~/Downloads/* "~/Blanchard-McConnell files/Scaffold models"
 $ mkdir "./Best seeds"

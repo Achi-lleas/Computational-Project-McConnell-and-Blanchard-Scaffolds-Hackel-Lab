@@ -21,5 +21,5 @@ $ mkdir "./Best seeds"
 $ mkdir "./cif files"
 $ python3 "Loop through AlphaFold3 models and compare scores.py"
 $ python3 "Move cif files for each scaffold into new directory.py"
-# Do the analysis on ChimeraX and make sure to have the following file in the directory correctly formatted: Amino acids participating in binding.txt
+# Do the analysis on ChimeraX and make sure to have the following files in the directory correctly formatted: Amino acids participating in binding Blanchard.txt, Amino acids participating in binding McConnell, Amino acid frequences in initial Blanchard libraries.txt, Amino acid frequences in initial McConnell libraries.txt
 $ python3 "Find amino acid enrichment.py"

@@ -17,11 +17,15 @@ def main(prefix):
     for scaffold_number in range(1, n+1):
 
         os.mkdir(f"./cif files/{prefix}{scaffold_number}") # The file paths and other parameeters can change.
+        os.mkdir(f"./Confidences files/{prefix}{scaffold_number}")
 
         for seed_number in range(1,21): # 20 seeds have been generated for each scaffold.
 
             shutil.copyfile(f"./Scaffold files/{prefix}{scaffold_number}seed{seed_number}/fold_{prefix}{scaffold_number}seed{seed_number}_model_0.cif", 
                        f"./cif files/{prefix}{scaffold_number}/fold_{prefix}{scaffold_number}seed{seed_number}_model_0.cif")
+            
+            shutil.copyfile(f"./Scaffold files/{prefix}{scaffold_number}seed{seed_number}/fold_{prefix}{scaffold_number}seed{seed_number}_summary_confidences_0.json", 
+                       f"./Confidences files/{prefix}{scaffold_number}/fold_{prefix}{scaffold_number}seed{seed_number}_summary_confidences_0.json")
 
 if __name__ == "__main__":
 

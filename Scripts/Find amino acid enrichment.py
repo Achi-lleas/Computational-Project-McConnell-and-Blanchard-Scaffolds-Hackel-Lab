@@ -12,9 +12,9 @@ from scipy.stats import binom
 
 one_letter_amino_acids = ["A", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "Y"]
 
-def main():
+def main(name):
     
-    with open("./Amino acids participating in binding.txt", "r") as file: # The name of the text files and other parameters can change for different applications of this script.
+    with open(f"./Amino acids participating in binding {name}.txt", "r") as file: # The name of the text files and other parameters can change for different applications of this script.
         
         total_amino_acids = 0
         enrichments, sequences = {}, []
@@ -44,9 +44,17 @@ def main():
 
     significance = []
 
-    for i in enrichments.values(): # A binomial distribution is used to check for enrichment in amino acids. The null hypothesis is that the amino acid being tested has a frequency of 0.05 in all paratopes.
+    with open(f"Amino acid frequencies in initial {name} libraries.txt", "r") as file:
 
-        if 0.025 < binom.cdf(i, total_amino_acids, 0.05) < 0.975:
+        probabilities = {}
+
+        for line in file: # Each line is of the form [amino acid one letter code] [frequency of the amino acid in the library].
+
+            probabilities[line.split(" ")[0]] = line.split(" ")[1]
+    
+    for i, j in enrichments.items(): # A binomial distribution is used to check for enrichment in amino acids. The null hypothesis is that the amino acid being tested has a frequency equal to its frequency in all of the libraries in all paratopes.
+
+        if 0.025 < binom.cdf(j, total_amino_acids, float(probabilities[i])) < 0.975:
             significance.append(False)
         else:
             significance.append(True)
@@ -70,4 +78,5 @@ def main():
     
 if __name__ == "__main__":    
 
-    main()
+    main("Blanchard")
+    main("McConnell")
